@@ -1,29 +1,48 @@
 import 'lib/lib.dart';
 
-void main() {
-  String name = inputStr('Digite seu nome: ');
-  int ID = inputInt('Digite seu id: ');
-  double valor_compra = inputDouble('Digite o valor da compra: ');
-  int numero_prestacoes = inputInt('Digite o número de prestações: ');
-
-  while (ID != -1) {
-    while (numero_prestacoes < 2 || numero_prestacoes > 36) {
-      print('Número de prestações inválido! Insira um número entre 2 e 36.');
-      numero_prestacoes = inputInt('Digite o número de prestações: ');
-    }
-
-    double valor_cada_prestacao = valor_compra / numero_prestacoes;
-    double valor_prestacao_proximos_12_meses = valor_cada_prestacao / 12;
-
-    print('Nome: $name');
-    print('Número da conta: $ID');
-    print('Valor total da compra: $valor_compra');
-    print(
-        'Valor de cada pretação nos próximos 12 meses: $valor_prestacao_proximos_12_meses');
-
-    name = inputStr('Digite seu nome: ');
-    ID = inputInt('Digite seu id: ');
-    valor_compra = inputDouble('Digite o valor da compra: ');
-    numero_prestacoes = inputInt('Digite o número de prestações: ');
+void verificacao_segundo_turno(
+  int cand_a,
+  int cand_b,
+  int cand_c,
+) {
+  if (cand_a == cand_b && cand_b == cand_c) {
+    print('Empate entre os três candidatos.');
+  } else if (cand_a == cand_c) {
+    print('Empate entre os candidatos 1 e 3');
+  } else if (cand_b == cand_c) {
+    print('Empate entre os candidatos 2 e 3');
+  } else {
+    print('Empate entre os candidatos 1 e 2');
   }
+}
+
+void main() {
+  Map candidatos = {'Candidato 1': 0, 'Candidato 2': 0, 'Candidato 3': 0};
+
+  print('Candidato 1 - 10');
+  print('Candidato 2 - 20');
+  print('Candidato 3 - 30');
+
+  int voto = inputInt("Digite o seu voto: ");
+
+  while (voto != 9999) {
+    voto == 10 ? candidatos['Candidato 1'] += 1 : candidatos['Candidato 1'] = candidatos['Candidato 1'];
+    voto == 20 ? candidatos['Candidato 2'] += 1 : candidatos['Candidato 2'] = candidatos['Candidato 2'];
+    voto == 30 ? candidatos['Candidato 3'] += 1 : candidatos['Candidato 3'] = candidatos['Candidato 3'];
+
+    voto = inputInt("Digite o seu voto: ");
+  }
+
+  print('Número de votos:');
+  for (int i = 1; i <= 3; i++) {
+    print('Candidato $i: ${candidatos['Candidato $i']}');
+  }
+
+  // Variáveis criadas para facilitar a leitura na verificação.
+  int candidato_1 = candidatos['Candidato 1'];
+  int candidato_2 = candidatos['Candidato 2'];
+  int candidato_3 = candidatos['Candidato 3'];
+
+  // Efetua a verificação dos votos para informar o candidato eleito.
+  verificacao_segundo_turno(candidato_1, candidato_2, candidato_3);
 }

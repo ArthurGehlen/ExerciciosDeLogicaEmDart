@@ -34,11 +34,6 @@
 
 # 3
 <code>
-  // 1 - Álcool
-  // 2 - Gasolina
-  // 3 - Diesel
-  // 4 - Fim
-
   int choice = inputInt("Informe um código (1, 2, 3) ou 4 para cancelar: ");
   int alcool = 0;
   int gasolina = 0;
@@ -67,8 +62,7 @@
 # 4
 <code>
   print('Digite 2 Números: ');
-
-
+  
   int number_1 = inputInt("");
   int number_2 = inputInt("");
 
@@ -104,7 +98,7 @@
 
 # 7 
 <code>
-int segundos = 0;
+  int segundos = 0;
   double minutos = 0;
   double massa = inputDouble('Digite a massa inicial em gramas: ');
 
@@ -218,4 +212,33 @@ int input = inputInt('Digte um valor: ');
 
   print('Media mulheres: $media_mulheres');
   print('Media homens: $media_homens');
+</code>
+
+# 10
+<code>
+  String name = inputStr('Digite seu nome: ');
+  int ID = inputInt('Digite seu id: ');
+  double valor_compra = inputDouble('Digite o valor da compra: ');
+  int numero_prestacoes = inputInt('Digite o número de prestações: ');
+
+  while (ID != -1) {
+    while (numero_prestacoes < 2 || numero_prestacoes > 36) {
+      print('Número de prestações inválido! Insira um número entre 2 e 36.');
+      numero_prestacoes = inputInt('Digite o número de prestações: ');
+    }
+
+    double valor_cada_prestacao = valor_compra / numero_prestacoes;
+    double valor_prestacao_proximos_12_meses = valor_cada_prestacao / 12;
+
+    print('Nome: $name');
+    print('Número da conta: $ID');
+    print('Valor total da compra: $valor_compra');
+    print(
+        'Valor de cada pretação nos próximos 12 meses: $valor_prestacao_proximos_12_meses');
+
+    name = inputStr('Digite seu nome: ');
+    ID = inputInt('Digite seu id: ');
+    valor_compra = inputDouble('Digite o valor da compra: ');
+    numero_prestacoes = inputInt('Digite o número de prestações: ');
+  }
 </code>
